@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: route-load-backend
+
+fastapi:
+  base-url: ${FASTAPI_URL:http://fastapi-stub:8000}

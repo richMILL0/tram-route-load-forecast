@@ -1,0 +1,24 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: route-load-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  backend:
+    build: ./backend
+    container_name: route-load-backend
+    environment:
+      FASTAPI_URL: http://fastapi-stub:8000
+    expose:
+      - "8080"
+    depends_on:
+      - fastapi-stub
+
+  fastapi-stub:
+    build: ./fastapi-stub
+    container_name: route-load-fastapi-stub
+    expose:
+      - "8000"
